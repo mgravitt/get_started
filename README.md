@@ -5,10 +5,10 @@
 ## Prerequisites
 
 * [Atom Text Editor](https://atom.io) (Or other text editor of your choice)
-* [Node.js](https://nodejs.org/en/)
-* [MetaMask](https://metamask.io/)
-  * [with test ether](https://faucet.rinkeby.io/)
-* [Heroku](https://heroku.com)
+* [Node.js](https://nodejs.org/en/)- installed
+* [MetaMask](https://metamask.io/) - installed
+  * [with test ether](https://faucet.rinkeby.io/) - deposited into your account
+* [Heroku](https://heroku.com) - account setup with command line tools installed
 
 ## Steps
 
