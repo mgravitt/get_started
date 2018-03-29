@@ -2,15 +2,17 @@
 
 ### Developed for NYC Blockchain Hack - 2018-03-31
 
+## Prerequisites
+
 * [Atom Text Editor](https://atom.io) (Or other text editor of your choice)
 * [Node.js](https://nodejs.org/en/)
 * [MetaMask](https://metamask.io/)
   * [with test ether](https://faucet.rinkeby.io/)
 * [Heroku](https://heroku.com)
 
-### Steps
+## Steps
 
-#### Setup Project and Install Dependencies
+### Setup Project and Install Dependencies
 
 ```
 npm install -g create-react-app
@@ -20,7 +22,7 @@ npm install --save web3@1.0.0-beta.26
 atom .
 ```
 
-#### Create web3.js File
+### Create web3.js File
 
 web3.js will serve as the communications layer to Ethereum.
 
@@ -36,7 +38,7 @@ const web3 = new Web3(window.web3.currentProvider);
 export default web3;
 ```
 
-#### Create lottery.js file
+### Create lottery.js file
 
 lottery.js will provide an operational contract interface to our React application.
 
@@ -54,7 +56,7 @@ const abi = [ <... paste from remix ...> ];
 export default new web3.eth.Contract(abi, address);
 ```
 
-#### Deploy Smart Contract in Remix and Connect lottery.js
+### Deploy Smart Contract in Remix and Connect lottery.js
 
 Go to http://remix.ethereum.org.
 
@@ -104,26 +106,28 @@ contract Lottery {
 
 Click on "Start to Compile" and ensure that the "Lottery" shows in a green box.
 
-![Remix compilation](https://github.com/gravitt8460/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![Remix compilation](img/remix_compilation.png")
 
 Ensure rinkeby is selected and click create
 
-![Remix compilation](img/rinkeby_and_click_create.png)
+![Rinkeby and click create](img/rinkeby_and_click_create.png)
 
 MetaMask will pop up. Confirm the transaction in MetaMask.
 
 Click copy icon to copy contract address to clipboard.
-(img/copy_icon_for_addr.png)
+![Copy address](img/copy_icon_for_addr.png)
 
 Paste the contract address into the lottery.js file.
 
 On the Compile tab, click the Details button and then copy the ABI by clicking the copy button.
 
-(img/copy_abi.png)
+![Click the details button](img/click_details.png)
+
+![Copy abi](img/copy_abi.png)
 
 Paste the ABI into the lottery.js file.
 
-#### Build src/App.js
+### Construct src/App.js
 
 src/App.js has the React Component code
 
