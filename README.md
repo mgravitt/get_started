@@ -2,6 +2,8 @@
 
 ### Developed for NYC Blockchain Hack - 2018-03-31
 
+![Overall Architecture](img/architecture.png)
+
 ## Prerequisites
 
 * [Atom Text Editor](https://atom.io) (Or other text editor of your choice)
