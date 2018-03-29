@@ -106,7 +106,7 @@ contract Lottery {
 
 Click on "Start to Compile" and ensure that the "Lottery" shows in a green box.
 
-![Remix compilation](img/remix_compilation.png")
+![Remix compilation](img/remix_compilation.png)
 
 Ensure rinkeby is selected and click create
 
