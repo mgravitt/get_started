@@ -266,3 +266,26 @@ If it isn't running already, start your react app with
 ```
 npm run start
 ```
+
+Your lottery interface should look like this:
+![Copy abi](img/lottery_interface.png)
+
+### Deploy to Heroku
+
+With a heroku account, the command line tools installed, and ssh enabled, run the followign commands::
+
+```
+heroku login
+heroku create
+```
+
+Note the app name assigned by heroku.
+
+```
+git init
+git add .
+git commit -m "initial commit"
+heroku git:remote -a <app-name>
+git push heroku master
+heroku open
+```
