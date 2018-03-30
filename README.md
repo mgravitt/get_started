@@ -281,7 +281,7 @@ Your lottery interface should look like this:
 
 ### Deploy to Heroku
 
-With a heroku account, the command line tools installed, and ssh enabled, run the followign commands::
+With a heroku account, the command line tools installed, and ssh enabled, run the following commands::
 
 ```
 heroku login
