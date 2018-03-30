@@ -14,80 +14,7 @@
 
 ## Steps
 
-### Setup Project and Install Dependencies
-
-#### Install create-react-app, create template application, and open in Atom
-
-```
-npm install -g create-react-app
-create-react-app my_app
-cd my_app
-atom .
-```
-
-To test the new application, run
-
-```
-npm run start
-```
-
-Test altering the src/App.js file.
-
-For an initial test, you can change this line:
-
-```
-<h1 className="App-title">Welcome to React</h1>
-```
-
-To this line:
-
-```
-<h1 className="App-title">Welcome to My Application</h1>
-```
-
-Then go back to the browser and ensure that the title is updated.
-
-### Create web3.js File
-
-web3.js will serve as the communications layer to Ethereum.
-
-Install kit as a dependency:
-
-```
-npm install --save web3@1.0.0-beta.26
-```
-
-Inside get_started/src folder, create a new file named "web3.js"
-
-Use the following code. It grabs the provider from MetaMask using `window.web3.currentProvider` and creates an instance of web3 using our installed version (1.0.0-beta.26).
-
-```
-import Web3 from "web3";
-
-const web3 = new Web3(window.web3.currentProvider);
-
-export default web3;
-```
-
-### Create lottery.js file
-
-lottery.js will provide an operational contract interface to our React application.
-
-Inside get_started/src folder, create a new file named "lottery.js"
-
-Use the following code, and then we will paste the abi and address from Remix into this file.
-
-```
-import web3 from "./web3";
-
-const address = " <... paste from remix...> ";
-
-const abi = [ <... paste from remix ...> ];
-
-export default new web3.eth.Contract(abi, address);
-```
-
-### Deploy Smart Contract in Remix and Connect lottery.js
+### Author Lottery Smart Contract in Remix
 
 Go to http://remix.ethereum.org.
 
@@ -134,6 +61,83 @@ contract Lottery {
     }
 }
 ```
+
+You should test your contract within Remix. We will come back to this after we setup our web application project.
+
+### Setup Project and Install Dependencies
+
+#### Install create-react-app, create template application, and open in Atom
+
+```
+npm install -g create-react-app
+create-react-app my_app
+cd my_app
+atom .
+```
+
+To test the new application, run
+
+```
+npm run start
+```
+
+Test altering the src/App.js file.
+
+For an initial test, you can change this line:
+
+```
+<h1 className="App-title">Welcome to React</h1>
+```
+
+To this line:
+
+```
+<h1 className="App-title">Welcome to My Application</h1>
+```
+
+Then go back to the browser and ensure that the title is updated.
+
+### Create web3.js File
+
+web3.js will serve as the communications layer to Ethereum.
+
+Install it as a dependency:
+
+```
+npm install --save web3@1.0.0-beta.26
+```
+
+Inside get_started/src folder, create a new file named "web3.js"
+
+Use the following code. It grabs the provider from MetaMask using `window.web3.currentProvider` and creates an instance of web3 using our installed version (1.0.0-beta.26).
+
+```
+import Web3 from "web3";
+
+const web3 = new Web3(window.web3.currentProvider);
+
+export default web3;
+```
+
+### Create lottery.js file
+
+lottery.js will provide an operational contract interface to our React application.
+
+Inside get_started/src folder, create a new file named "lottery.js"
+
+Use the following code, and then we will paste the abi and address from Remix into this file.
+
+```
+import web3 from "./web3";
+
+const address = " <... paste from remix...> ";
+
+const abi = [ <... paste from remix ...> ];
+
+export default new web3.eth.Contract(abi, address);
+```
+
+### Deploy Smart Contract in Remix and Connect lottery.js
 
 Click on "Start to Compile" and ensure that the "Lottery" shows in a green box.
 
@@ -198,7 +202,7 @@ async componentDidMount() {
 Add an onSubmit method that we'll use for players to enter the lottery.
 
 ```
-onSubmit = async event => {
+enterLottery = async event => {
     // prevents normal form submission
     event.preventDefault();
 
@@ -220,7 +224,7 @@ onSubmit = async event => {
 Add an onClick method that we'll use to pick the winner for our lottery.
 
 ```
-onClick = async event => {
+pickWinner = async event => {
     const accounts = await web3.eth.getAccounts();
 
     this.setState({ message: "Waiting on transaction success..." });
@@ -249,7 +253,7 @@ render() {
         </p>
         <hr />
 
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.enterLottery}>
           <h4>Want to try your luck?</h4>
           <div>
             <label>Amount of ether to enter</label>
@@ -262,7 +266,7 @@ render() {
         </form>
         <hr />
         <h4>Ready to pick a winner?</h4>
-        <button onClick={this.onClick}>Pick a winner</button>
+        <button onClick={this.pickWinner}>Pick a winner</button>
         <hr />
         <h1>{this.state.message}</h1>
       </div>

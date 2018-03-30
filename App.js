@@ -14,7 +14,6 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    // note we don't have to specify who it is from because it's being pulled from MetaMask
     const manager = await lottery.methods.manager().call();
     const players = await lottery.methods.getPlayers().call();
     const balance = await web3.eth.getBalance(lottery.options.address);
@@ -22,36 +21,31 @@ class App extends Component {
     this.setState({ manager, players, balance });
   }
 
-  onSubmit = async event => {
-    // prevents normal form submission
+  enterLottery = async event => {
     event.preventDefault();
 
     const accounts = await web3.eth.getAccounts();
 
-    // put this in a bit later
-    this.setState({ message: "Waiting on transaction success..." });
+    this.setState({ message: "Waiting on transaction..." });
 
     await lottery.methods.enter().send({
       from: accounts[0],
       value: web3.utils.toWei(this.state.value, "ether")
     });
 
-    // put this in a bit later
-    this.setState({ message: "You have been entered!" });
+    this.setState({ message: "You have been entered." });
   };
 
-  onClick = async event => {
+  pickWinner = async event => {
     const accounts = await web3.eth.getAccounts();
 
-    this.setState({ message: "Waiting on transaction success..." });
+    this.setState({ message: "Waiting on transaction..." });
 
-    console.log(
-      await lottery.methods.pickWinner().send({
-        from: accounts[0]
-      })
-    );
+    await lottery.methods.pickWinner().send({
+      from: accounts[0]
+    });
 
-    this.setState({ message: "Winner has been picked!" });
+    this.setState({ message: "A winner has been selected." });
   };
 
   render() {
@@ -65,7 +59,7 @@ class App extends Component {
         </p>
         <hr />
 
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.enterLottery}>
           <h4>Want to try your luck?</h4>
           <div>
             <label>Amount of ether to enter</label>
@@ -78,7 +72,7 @@ class App extends Component {
         </form>
         <hr />
         <h4>Ready to pick a winner?</h4>
-        <button onClick={this.onClick}>Pick a winner</button>
+        <button onClick={this.pickWinner}>Pick a winner</button>
         <hr />
         <h1>{this.state.message}</h1>
       </div>
