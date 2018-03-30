@@ -1,4 +1,4 @@
-# Jump Start with Ethereum and React
+# Jump Start with Ethereum, React, and Heroku
 
 ### Developed for NYC Blockchain Hack - 2018-03-31
 
@@ -16,21 +16,50 @@
 
 ### Setup Project and Install Dependencies
 
+#### Install create-react-app, create template application, and open in Atom
+
 ```
 npm install -g create-react-app
 create-react-app my_app
 cd my_app
-npm install --save web3@1.0.0-beta.26
 atom .
 ```
+
+To test the new application, run
+
+```
+npm run start
+```
+
+Test altering the src/App.js file.
+
+For an initial test, you can change this line:
+
+```
+<h1 className="App-title">Welcome to React</h1>
+```
+
+To this line:
+
+```
+<h1 className="App-title">Welcome to My Application</h1>
+```
+
+Then go back to the browser and ensure that the title is updated.
 
 ### Create web3.js File
 
 web3.js will serve as the communications layer to Ethereum.
 
+Install kit as a dependency:
+
+```
+npm install --save web3@1.0.0-beta.26
+```
+
 Inside get_started/src folder, create a new file named "web3.js"
 
-Use the following code. It grabs the provider from MetaMask using "window.web3.currentProvider" and creates an instance of web3 using our installed version (1.0.0-beta.26).
+Use the following code. It grabs the provider from MetaMask using `window.web3.currentProvider` and creates an instance of web3 using our installed version (1.0.0-beta.26).
 
 ```
 import Web3 from "web3";
@@ -129,29 +158,7 @@ On the Compile tab, click the Details button and then copy the ABI by clicking t
 
 Paste the ABI into the lottery.js file.
 
-### Construct src/App.js
-
-src/App.js has the React Component code
-
-For an initial test, you can change this line:
-
-```
-<h1 className="App-title">Welcome to React</h1>
-```
-
-To this line:
-
-```
-<h1 className="App-title">Welcome to My Application</h1>
-```
-
-Then run
-
-```
-npm run start
-```
-
-and ensure that the title is updated.
+### Update src/App.js
 
 Add imports to App.js
 
