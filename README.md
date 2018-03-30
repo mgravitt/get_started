@@ -32,11 +32,7 @@ contract Lottery {
     }
 
     function enter () public payable {
-
-        // emphasize the use of "ether" keyword
         require (msg.value > 0.01 ether);
-
-        // emphasize 'payable' function type
         players.push (msg.sender);
     }
 
