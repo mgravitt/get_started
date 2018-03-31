@@ -72,8 +72,8 @@ You should test your contract within Remix. We will come back to this after we s
 
 ```
 npm install -g create-react-app
-create-react-app my_app
-cd my_app
+create-react-app lottery_app
+cd lottery_app
 atom .
 ```
 
