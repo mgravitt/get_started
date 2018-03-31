@@ -2,6 +2,12 @@
 
 ### Developed for NYC Blockchain Hack - 2018-03-31
 
+## Overview of Lottery Application
+
+![Overall Architecture](img/lottery_overview.png)
+
+## Technical Architecture
+
 ![Overall Architecture](img/architecture.png)
 
 ## Prerequisites
